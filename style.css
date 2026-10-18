@@ -211,6 +211,6 @@ dialog[open] .sl-art .disc{animation:out 1s .25s cubic-bezier(.2,.7,.2,1) both} 
   dialog{max-width:100vw;max-height:100vh;height:100%;border-radius:0}.sl-inner{max-height:100vh}
   .pers li{grid-template-columns:1fr;gap:0}
 }
-.chart b,.tl b,.facts dd,.yeargrp>h3,.sl-head .yr{font-family:"Playfair Display",Georgia,serif;font-weight:400}
+.chart b,.tl b,.facts dd,.yeargrp>h3{font-family:"Playfair Display",Georgia,serif;font-weight:400}
 .chart b{font-size:24px}.tl b{font-size:15px}.yeargrp>h3{font-size:28px}
 @media (min-width:641px){.gnomes{height:170px;width:280px;bottom:26px}}
