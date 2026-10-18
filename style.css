@@ -214,3 +214,15 @@ dialog[open] .sl-art .disc{animation:out 1s .25s cubic-bezier(.2,.7,.2,1) both} 
 .chart b,.tl b,.facts dd,.yeargrp>h3{font-family:"Playfair Display",Georgia,serif;font-weight:400}
 .chart b{font-size:24px}.tl b{font-size:15px}.yeargrp>h3{font-size:28px}
 @media (min-width:641px){.gnomes{height:170px;width:280px;bottom:26px}}
+/* tip + visits */
+.tip{margin:34px 0 26px;padding:26px 28px;border:1px solid var(--line);border-radius:16px;background:var(--card);max-width:560px;box-shadow:var(--shadow)}
+.tip[hidden],.tip-float[hidden],.visits[hidden]{display:none}
+.tip-title{font:italic 500 30px/1.1 var(--serif);color:var(--ink);margin:0 0 6px}
+.tip-sub{margin:0 0 16px;color:var(--ink2);font-size:14px}
+.tip-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:99px;background:var(--moss);color:var(--card);text-decoration:none;font:500 14px/1 var(--sans);transition:transform .25s,background .25s}
+.tip-btn:hover{transform:translateY(-2px);background:var(--gold)}
+.tip-float{position:fixed;right:18px;bottom:18px;z-index:45;display:flex;align-items:center;gap:6px;padding:10px 14px;border-radius:99px;background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow);text-decoration:none;font:500 13px/1 var(--sans);opacity:.88;transition:opacity .25s,transform .25s}
+.tip-float:hover{opacity:1;transform:translateY(-2px)}
+.visits{font:italic 400 20px/1.3 var(--serif);color:var(--ink2);margin:22px 0 10px}
+.visits b{font:400 22px/1 "Playfair Display",Georgia,serif;font-style:normal;color:var(--gold);margin-left:4px}
+@media (max-width:640px){.tip{padding:20px}.tip-float .tf-l{display:none}.tip-float{right:12px;bottom:12px;padding:11px}}

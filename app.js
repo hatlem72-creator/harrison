@@ -1,3 +1,10 @@
+/* ===== Settings =====
+   TIP_URL: paste a tip/donation link here (e.g. a Ko-fi, Buy Me a Coffee, PayPal.me or Vipps page)
+   to show the tip button. Leave it empty ("") to keep the tip button hidden. */
+const TIP_URL = "";
+/* Visitor counter: Abacus (abacus.jasoncameron.dev), free, no sign-up, no cookies. One hit per page load. */
+const COUNTER_URL = "https://abacus.jasoncameron.dev/hit/hatlem72-creator-harrison/visits";
+
 (() => {
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -105,6 +112,22 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft' && i > 0) { history.replaceState(null, '', '#r/' + ALL[i - 1].id); route(); }
 });
 route();
+
+/* tip button (hidden unless TIP_URL is set) */
+if (/^https?:\/\//.test(TIP_URL)) { ['#tipBtn', '#tipFloat'].forEach(s => { $(s).href = TIP_URL; }); $('#tipBox').hidden = false; $('#tipFloat').hidden = false; }
+
+/* visitor counter (hidden if the service is unreachable) */
+(async () => {
+  try {
+    const ac = new AbortController(); const t = setTimeout(() => ac.abort(), 6000);
+    const r = await fetch(COUNTER_URL, {signal: ac.signal, cache: 'no-store', credentials: 'omit', referrerPolicy: 'no-referrer'});
+    clearTimeout(t);
+    if (!r.ok) return;
+    const d = await r.json(); const n = Number(d.value);
+    if (!Number.isFinite(n) || n < 1) return;
+    $('#visitCount').textContent = n.toLocaleString('en-US'); $('#visits').hidden = false;
+  } catch (e) { /* stay hidden */ }
+})();
 
 /* reveal + active nav */
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin: '0px 0px -8% 0px'});
